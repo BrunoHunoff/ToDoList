@@ -5,14 +5,19 @@ const taskList = document.getElementById("task");
 
 const listFirst = list.firstElementChild;
 
+document.addEventListener('keypress', function(event) {
+    if(event.key === "Enter") {
+        addTask();
+    }
+});
+
 function addTask() {
     const li = document.createElement("li");
 
     let text = task.value;
-
     if (text == "") {
         inputAdd.classList.add('hide');
-        taskList.classList.remove('hide');
+        taskList.classList.remove('blur');
         return;
     }
 
@@ -22,11 +27,15 @@ function addTask() {
 
     list.appendChild(li);
 
+    task.value = "";
+
     inputAdd.classList.add('hide');
-    taskList.classList.remove('hide');
+    taskList.classList.remove('blur');
+
 }
 
 function newTask() {
-    taskList.classList.add('hide');
+    taskList.classList.add('blur');
     inputAdd.classList.remove('hide');
 }
+
